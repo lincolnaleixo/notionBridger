@@ -122,4 +122,11 @@ async function checkForModifications () {
   }
 }
 
-await main()
+// execute every 2 seconds but do not overlap
+while (true) {
+  await main()
+  await new Promise(resolve => setTimeout(
+    resolve,
+    2000
+  ))
+}
